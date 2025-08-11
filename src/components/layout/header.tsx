@@ -61,6 +61,7 @@ export function Header() {
             alt="J&C Collections Logo"
             width={100}
             height={100}
+            className="object-contain md:w-25 md:h-25 w-30 h-30"
           />
           <span className="font-headline text-2xl font-bold text-primary">
             J&C Collections
