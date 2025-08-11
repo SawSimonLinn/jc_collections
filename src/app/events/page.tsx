@@ -21,7 +21,7 @@ const upcomingEvents = [
     excerpt:
       "Be the first to witness our breathtaking Autumn/Winter collection as it debuts on the runway. An evening of glamour and artistry awaits.",
     image:
-      "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/1-9.jpg?raw=true",
+      "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/5-1.jpg?raw=true",
     "data-ai-hint": "fashion runway high fashion",
   },
 ];
@@ -35,7 +35,7 @@ const pastEvents = [
     excerpt:
       "A look back at our celebrated Spring '24 show in the heart of Paris, where elegance met tradition.",
     image:
-      "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/2-2.jpg?raw=true",
+      "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/5-1.jpg?raw=true",
     "data-ai-hint": "fashion model paris",
   },
   {
@@ -46,14 +46,14 @@ const pastEvents = [
     excerpt:
       "An unforgettable night celebrating and supporting the artisans who keep our heritage alive.",
     image:
-      "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/1-5.jpg?raw=true",
+      "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/5-1.jpg?raw=true",
     "data-ai-hint": "gala event night",
   },
 ];
 
 export default function EventsPage() {
   return (
-    <div className="container mx-auto py-12 md:py-20">
+    <div className="container mx-auto py-12 md:py-20 px-4">
       <div className="text-center">
         <h1 className="font-headline text-5xl text-primary">Events</h1>
         <p className="mt-4 text-lg text-foreground/80 max-w-2xl mx-auto">
@@ -62,7 +62,7 @@ export default function EventsPage() {
         </p>
       </div>
 
-      <section className="mt-16">
+      <section className="mt-12 md:mt-16">
         <h2 className="font-headline text-4xl text-center text-primary mb-10">
           Upcoming Events
         </h2>
@@ -70,25 +70,14 @@ export default function EventsPage() {
           {upcomingEvents.map((post) => (
             <Card
               key={post.slug}
-              className="flex flex-col md:flex-row bg-card border-none shadow-lg transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl"
+              className="bg-card border text-card-foreground shadow-sm transition-shadow hover:shadow-lg"
             >
-              <CardHeader className="p-0 w-full md:w-1/3">
-                <div className="relative aspect-video md:aspect-square h-full">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    className="object-cover object-top md:rounded-l-lg md:rounded-r-none rounded-t-lg"
-                    data-ai-hint={post["data-ai-hint"]}
-                  />
-                </div>
-              </CardHeader>
-              <div className="flex flex-col flex-grow w-full md:w-2/3">
-                <CardContent className="flex-grow p-6">
-                  <CardTitle className="font-headline text-3xl text-foreground leading-tight">
+              <div className="flex flex-col flex-grow w-full">
+                <CardContent className="flex-grow p-6 md:p-8">
+                  <CardTitle className="font-headline text-2xl md:text-3xl text-foreground leading-tight">
                     {post.title}
                   </CardTitle>
-                  <div className="flex items-center gap-6 text-muted-foreground mt-3">
+                  <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 text-muted-foreground mt-3 text-sm md:text-base">
                     <div className="flex items-center gap-2">
                       <Calendar className="h-5 w-5 text-accent" />
                       <span>{post.date}</span>
@@ -98,13 +87,12 @@ export default function EventsPage() {
                       <span>{post.location}</span>
                     </div>
                   </div>
-                  <p className="mt-4 text-foreground/80">{post.excerpt}</p>
+                  <p className="mt-4 text-foreground/80 text-base md:text-lg">
+                    {post.excerpt}
+                  </p>
                 </CardContent>
-                <CardFooter className="p-6 pt-0">
-                  <Button
-                    asChild
-                    className="text-primary hover:text-accent bg-transparent border border-primary hover:bg-primary/10"
-                  >
+                <CardFooter className="p-6 md:p-8 pt-0">
+                  <Button asChild>
                     <Link href={`/events/upcoming/${post.slug}`}>
                       View Details <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
@@ -116,7 +104,7 @@ export default function EventsPage() {
         </div>
       </section>
 
-      <section className="mt-20">
+      <section className="mt-16 md:mt-20">
         <h2 className="font-headline text-4xl text-center text-primary mb-10">
           Past Events
         </h2>
@@ -124,7 +112,7 @@ export default function EventsPage() {
           {pastEvents.map((post) => (
             <Card
               key={post.slug}
-              className="flex flex-col bg-card border-none shadow-lg transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl"
+              className="flex flex-col bg-card border text-card-foreground shadow-sm transition-shadow hover:shadow-lg"
             >
               <CardHeader className="p-0">
                 <div className="relative aspect-video">
@@ -132,7 +120,7 @@ export default function EventsPage() {
                     src={post.image}
                     alt={post.title}
                     fill
-                    className="object-cover rounded-t-lg object-top"
+                    className="object-cover rounded-t-lg"
                     data-ai-hint={post["data-ai-hint"]}
                   />
                 </div>

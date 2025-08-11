@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function AboutPage() {
   return (
     <div className="bg-secondary">
-      <div className="container mx-auto py-12 md:py-20">
+      <div className="container mx-auto py-12 md:py-20 px-4">
         <div className="text-center">
           <h1 className="font-headline text-5xl text-primary">Our Story</h1>
           <p className="mt-4 text-lg text-foreground/80 max-w-3xl mx-auto">
@@ -13,7 +13,7 @@ export default function AboutPage() {
           </p>
         </div>
 
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="mt-12 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="relative aspect-square">
             <Image
               src="https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/5-1.jpg?raw=true"
@@ -43,7 +43,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="mt-20 text-center">
+        <div className="mt-16 md:mt-20 text-center">
           <h2 className="font-headline text-4xl text-primary">
             Journey of a Thread
           </h2>
@@ -62,7 +62,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="space-y-6 md:order-2">
             <h2 className="font-headline text-4xl text-primary">
               A Legacy of Craftsmanship
@@ -82,10 +82,10 @@ export default function AboutPage() {
           </div>
           <div className="relative aspect-square md:order-1">
             <Image
-              src="https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/1-3.jpg?raw=true"
+              src="https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/5-1.jpg?raw=true"
               alt="Artisan working on a garment"
               fill
-              className="object-cover object-top rounded-lg shadow-2xl"
+              className="object-cover rounded-lg shadow-2xl"
               data-ai-hint="artisan hands weaving"
             />
           </div>

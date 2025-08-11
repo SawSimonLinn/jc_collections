@@ -1,5 +1,5 @@
-import { Twitter, Instagram, Facebook } from 'lucide-react';
-import Link from 'next/link';
+import { Twitter, Instagram, Facebook, Linkedin } from "lucide-react";
+import Link from "next/link";
 
 export function Footer() {
   return (
@@ -17,6 +17,14 @@ export function Footer() {
           </Link>
           <Link href="#" aria-label="Facebook">
             <Facebook className="h-6 w-6 text-muted-foreground transition-colors hover:text-primary" />
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/sawsimonlinn"
+            aria-label="LinkedIn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Linkedin className="h-6 w-6 text-muted-foreground transition-colors hover:text-primary" />
           </Link>
         </div>
       </div>

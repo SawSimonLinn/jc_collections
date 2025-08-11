@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,7 +13,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import React from "react";
 
 const pastEventData = {
   "spring-24-runway-show": {
@@ -73,38 +73,43 @@ const pastEventData = {
     images: [
       {
         src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/5-1.jpg?raw=true",
-        alt: "Guests at the gala",
-        hint: "gala event",
+        alt: "Runway model in a floral gown",
+        hint: "fashion runway model",
       },
       {
         src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/5-1.jpg?raw=true",
-        alt: "A traditional dance performance",
-        hint: "traditional dance",
+        alt: "Backstage preparations",
+        hint: "backstage fashion",
       },
       {
         src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/5-1.jpg?raw=true",
-        alt: "The palace lit up at night",
-        hint: "palace night",
+        alt: "Close-up of an embroidered detail",
+        hint: "embroidery detail",
       },
       {
         src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/5-1.jpg?raw=true",
-        alt: "Artisans showcasing their work",
-        hint: "artisan showcase",
+        alt: "The design duo taking a bow",
+        hint: "fashion designers",
       },
       {
         src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/5-1.jpg?raw=true",
-        alt: "A keynote speech being delivered",
-        hint: "keynote speech",
+        alt: "Guests arriving at the venue",
+        hint: "fashion event guests",
       },
       {
         src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/5-1.jpg?raw=true",
-        alt: "An auction in progress",
-        hint: "charity auction",
+        alt: "Atmospheric shot of the runway",
+        hint: "runway stage",
       },
       {
         src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/5-1.jpg?raw=true",
-        alt: "Exquisite table settings",
-        hint: "luxury dining",
+        alt: "A vibrant silk creation",
+        hint: "silk dress",
+      },
+      {
+        src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/5-1.jpg?raw=true",
+        alt: "Celebrities in the front row",
+        hint: "front row fashion",
       },
     ],
   },
@@ -120,7 +125,7 @@ export default function PastEventDetailsPage({
 
   if (!event) {
     return (
-      <div className="container mx-auto py-12 md:py-20 text-center">
+      <div className="container mx-auto py-12 md:py-20 text-center px-4">
         <h1 className="font-headline text-4xl text-primary">Event Not Found</h1>
         <p className="mt-4 text-lg">
           Sorry, we couldn't find details for this event.
@@ -135,19 +140,21 @@ export default function PastEventDetailsPage({
   }
 
   return (
-    <div className="container mx-auto py-12 md:py-20">
-      <Button asChild variant="ghost" className="mb-8">
+    <div className="container mx-auto py-12 md:py-20 px-4">
+      <Button asChild variant="ghost" className="mb-8 -ml-4">
         <Link href="/events">
           <ArrowLeft className="mr-2 h-4 w-4" /> Back to Events
         </Link>
       </Button>
 
       <div className="text-center">
-        <h1 className="font-headline text-5xl text-primary">{event.title}</h1>
-        <p className="mt-2 text-lg text-muted-foreground">
+        <h1 className="font-headline text-4xl md:text-5xl text-primary">
+          {event.title}
+        </h1>
+        <p className="mt-2 text-base md:text-lg text-muted-foreground">
           {event.date} &middot; {event.location}
         </p>
-        <p className="mt-6 text-lg text-foreground/80 max-w-3xl mx-auto">
+        <p className="mt-6 text-base md:text-lg text-foreground/80 max-w-3xl mx-auto">
           {event.description}
         </p>
       </div>
@@ -164,7 +171,7 @@ export default function PastEventDetailsPage({
             {event.images.map((image, i) => (
               <CarouselItem key={i}>
                 <div className="p-1">
-                  <Card className="border-none shadow-lg">
+                  <Card className="border bg-card text-card-foreground shadow-sm">
                     <CardContent className="flex aspect-video items-center justify-center p-0 relative rounded-lg overflow-hidden">
                       <Image
                         src={image.src}
@@ -179,8 +186,8 @@ export default function PastEventDetailsPage({
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="ml-16" />
-          <CarouselNext className="mr-16" />
+          <CarouselPrevious className="ml-4 md:ml-16" />
+          <CarouselNext className="mr-4 md:mr-16" />
         </Carousel>
       </div>
     </div>

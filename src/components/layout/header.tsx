@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import {
   Sheet,
   SheetContent,
@@ -15,6 +14,7 @@ import {
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import Image from "next/image";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -86,30 +86,21 @@ export function Header() {
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-[300px] sm:w-[400px] bg-background p-4"
+              className="w-[300px] sm:w-[400px] bg-background p-0 flex flex-col"
             >
-              <SheetHeader>
-                <div className="flex justify-between items-center mb-8">
-                  <SheetTitle asChild>
-                    <Link
-                      href="/"
-                      className="flex items-center gap-2"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      <span className="font-headline text-2xl font-bold text-primary">
-                        J&C Collections
-                      </span>
-                    </Link>
-                  </SheetTitle>
-                  <SheetTrigger asChild>
-                    <Button variant="ghost" size="icon">
-                      <X className="h-6 w-6" />
-                      <span className="sr-only">Close menu</span>
-                    </Button>
-                  </SheetTrigger>
-                </div>
+              <SheetHeader className="flex flex-row items-center justify-between p-4 border-b">
+                <SheetTitle asChild>
+                  <Link href="/" onClick={() => setIsMenuOpen(false)}>
+                    <span className="font-headline text-2xl font-bold text-primary">
+                      J&C Collections
+                    </span>
+                    <VisuallyHidden>Home</VisuallyHidden>
+                  </Link>
+                </SheetTitle>
+                {/* This SheetClose is part of Radix's Dialog, which Sheet is built on. It will find the trigger and close the sheet. */}
+                {/* The duplicate X button was inside the nav below. */}
               </SheetHeader>
-              <nav className="flex flex-col gap-6">
+              <nav className="flex flex-col gap-6 p-4">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}

@@ -46,7 +46,7 @@ const lookbookImages = [
 
 export default function LookbookPage() {
   return (
-    <div className="container mx-auto py-12 md:py-20">
+    <div className="container mx-auto py-12 md:py-20 px-4">
       <div className="text-center">
         <h1 className="font-headline text-5xl text-primary">Lookbook</h1>
         <p className="mt-4 text-lg text-foreground/80 max-w-2xl mx-auto">
@@ -55,10 +55,10 @@ export default function LookbookPage() {
         </p>
       </div>
 
-      <div className="mt-16 columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+      <div className="mt-12 md:mt-16 columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
         {lookbookImages.map((image, index) => (
           <div key={index} className="break-inside-avoid">
-            <Card className="overflow-hidden border-none shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+            <Card className="overflow-hidden border bg-card text-card-foreground shadow-sm transition-shadow hover:shadow-lg">
               <CardContent className="p-0">
                 <Image
                   src={image.src}

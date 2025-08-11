@@ -67,11 +67,11 @@ const Countdown = ({ targetDate }: { targetDate: Date }) => {
 
 
   return (
-    <div className="flex justify-center gap-4 md:gap-8 my-6">
+    <div className="my-6 flex justify-center gap-2 md:gap-8">
       {Object.entries(timeLeft).map(([unit, value]) => (
-        <div key={unit} className="text-center bg-primary/10 p-4 rounded-lg w-24">
-          <div className="text-4xl md:text-5xl font-bold text-primary">{value}</div>
-          <div className="text-sm uppercase text-muted-foreground">{unit}</div>
+        <div key={unit} className="w-20 rounded-lg bg-primary/10 p-3 text-center md:w-24 md:p-4">
+          <div className="text-3xl font-bold text-primary md:text-5xl">{value}</div>
+          <div className="text-xs uppercase text-muted-foreground md:text-sm">{unit}</div>
         </div>
       ))}
     </div>
@@ -83,14 +83,14 @@ export default function UpcomingEventDetailsPage({ params }: { params: { slug: s
   const event = eventData; // In a real app, you'd fetch this based on params.slug
 
   return (
-    <div className="container mx-auto py-12 md:py-20 max-w-5xl">
-       <Button asChild variant="ghost" className="mb-8">
+    <div className="container mx-auto max-w-5xl px-4 py-12 md:py-20">
+       <Button asChild variant="ghost" className="mb-8 -ml-4">
         <Link href="/events"><ArrowLeft className="mr-2 h-4 w-4" /> Back to Events</Link>
       </Button>
-      <Card className="bg-card border-none shadow-xl overflow-hidden">
-        <CardHeader className="bg-secondary p-8 text-center">
-            <CardTitle className="font-headline text-5xl text-primary">{event.title}</CardTitle>
-            <div className="flex items-center justify-center gap-6 text-muted-foreground mt-2 text-lg">
+      <Card className="overflow-hidden border bg-card text-card-foreground shadow-sm">
+        <CardHeader className="bg-secondary p-6 text-center md:p-8">
+            <CardTitle className="font-headline text-4xl text-primary md:text-5xl">{event.title}</CardTitle>
+            <div className="mt-2 flex flex-col items-center justify-center gap-2 text-base text-muted-foreground md:flex-row md:gap-6">
                 <div className="flex items-center gap-2">
                     <Calendar className="h-5 w-5 text-accent" />
                     <span>{event.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
@@ -101,46 +101,48 @@ export default function UpcomingEventDetailsPage({ params }: { params: { slug: s
                 </div>
             </div>
         </CardHeader>
-        <CardContent className="p-8">
+        <CardContent className="p-6 md:p-8">
             <Countdown targetDate={event.date} />
-            <p className="text-lg text-foreground/80 my-8 text-center max-w-3xl mx-auto">{event.description}</p>
+            <p className="mx-auto my-8 max-w-3xl text-center text-base text-foreground/80 md:text-lg">{event.description}</p>
             
-            <h3 className="font-headline text-3xl text-primary mb-4 text-center">Event Highlights</h3>
-            <ul className="list-disc list-inside space-y-2 mb-8 text-foreground/90 max-w-md mx-auto">
+            <h3 className="mb-4 text-center font-headline text-3xl text-primary">Event Highlights</h3>
+            <ul className="mx-auto mb-8 max-w-md list-inside list-disc space-y-2 text-base text-foreground/90">
                 {event.details.map((detail, i) => <li key={i}>{detail}</li>)}
             </ul>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
+            <div className="mt-12 grid grid-cols-1 gap-12 md:grid-cols-2">
                 <div className="text-center">
-                    <h3 className="font-headline text-3xl text-primary mb-6 flex items-center justify-center gap-3"><Users className="h-8 w-8"/> Special Guests</h3>
-                    <div className="flex flex-wrap gap-6 justify-center">
+                    <h3 className="mb-6 flex items-center justify-center gap-3 font-headline text-3xl text-primary"><Users className="h-8 w-8"/> Special Guests</h3>
+                    <div className="flex flex-wrap justify-center gap-6">
                         {event.celebrities.map(celeb => (
                             <div key={celeb.name} className="flex flex-col items-center gap-2">
-                                <Avatar className="h-24 w-24 border-4 border-primary/20">
+                                <Avatar className="h-20 w-20 border-4 border-primary/20 md:h-24 md:w-24">
                                     <AvatarImage src={celeb.image} alt={celeb.name} data-ai-hint={celeb.hint}/>
                                     <AvatarFallback>{celeb.name.charAt(0)}</AvatarFallback>
                                 </Avatar>
-                                <span className="font-bold text-lg">{celeb.name}</span>
+                                <span className="font-bold text-base md:text-lg">{celeb.name}</span>
                             </div>
                         ))}
                     </div>
                 </div>
                     <div className="text-center">
-                    <h3 className="font-headline text-3xl text-primary mb-6 flex items-center justify-center gap-3"><Building className="h-8 w-8"/> Our Sponsors</h3>
-                        <div className="flex flex-wrap gap-8 items-center justify-center">
+                    <h3 className="mb-6 flex items-center justify-center gap-3 font-headline text-3xl text-primary"><Building className="h-8 w-8"/> Our Sponsors</h3>
+                        <div className="flex flex-wrap items-center justify-center gap-8">
                         {event.sponsors.map(sponsor => (
-                            <Image key={sponsor.name} src={sponsor.logo} alt={sponsor.name} width={150} height={75} className="object-contain" data-ai-hint={sponsor.hint}/>
+                            <Image key={sponsor.name} src={sponsor.logo} alt={sponsor.name} width={120} height={60} className="object-contain" data-ai-hint={sponsor.hint}/>
                         ))}
                     </div>
                 </div>
             </div>
         </CardContent>
-        <div className="bg-secondary p-8 flex-col items-center text-center">
-            <Button size="lg" className="text-lg">
-                <Ticket className="mr-2 h-5 w-5" />
-                RSVP / Get Tickets
-            </Button>
-            <p className="text-sm text-muted-foreground mt-3">Tickets are limited. Secure your spot for an unforgettable night!</p>
+        <div className="flex-col items-center bg-secondary p-8 text-center">
+          <Button size="lg" className="text-lg" asChild>
+            <Link href="https://www.eventbrite.com/e/jc-collections-tickets-1575159677999?aff=oddtdtcreator" target="_blank" rel="noopener noreferrer">
+              <Ticket className="mr-2 h-5 w-5" />
+              RSVP / Get Tickets
+            </Link>
+          </Button>
+          <p className="mt-3 text-sm text-muted-foreground">Tickets are limited. Secure your spot for an unforgettable night!</p>
         </div>
       </Card>
     </div>

@@ -42,7 +42,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="container mx-auto py-12 md:py-20">
+    <div className="container mx-auto py-12 md:py-20 px-4">
       <div className="text-center">
         <h1 className="font-headline text-5xl text-primary">Get In Touch</h1>
         <p className="mt-4 text-lg text-foreground/80 max-w-2xl mx-auto">
@@ -50,8 +50,8 @@ export default function ContactPage() {
         </p>
       </div>
 
-      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-16">
-        <Card className="bg-card border-none shadow-lg">
+      <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+        <Card className="bg-card text-card-foreground">
           <CardHeader>
             <CardTitle className="font-headline text-3xl text-primary">Send a Message</CardTitle>
           </CardHeader>
@@ -65,7 +65,7 @@ export default function ContactPage() {
                     <FormItem>
                       <FormLabel className="text-base">Full Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="Your Name" {...field} className="text-base"/>
+                        <Input placeholder="Your Name" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -78,7 +78,7 @@ export default function ContactPage() {
                     <FormItem>
                       <FormLabel className="text-base">Email Address</FormLabel>
                       <FormControl>
-                        <Input type="email" placeholder="your.email@example.com" {...field} className="text-base"/>
+                        <Input type="email" placeholder="your.email@example.com" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -91,7 +91,7 @@ export default function ContactPage() {
                     <FormItem>
                       <FormLabel className="text-base">Message</FormLabel>
                       <FormControl>
-                        <Textarea placeholder="Tell us how we can help..." {...field} className="min-h-[120px] text-base" />
+                        <Textarea placeholder="Tell us how we can help..." {...field} className="min-h-[120px]" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -106,7 +106,7 @@ export default function ContactPage() {
         <div className="space-y-12">
             <div>
                 <h2 className="font-headline text-3xl text-primary mb-6">Contact Information</h2>
-                <div className="space-y-4 text-lg">
+                <div className="space-y-4 text-base md:text-lg">
                     <div className="flex items-start gap-4">
                         <MapPin className="h-6 w-6 text-accent mt-1 flex-shrink-0" />
                         <span>123 Heritage Lane, Tradition City, 12345</span>
@@ -147,21 +147,23 @@ export default function ContactPage() {
         </div>
       </div>
       
-      <Card className="mt-20 bg-secondary border-none shadow-xl">
-        <CardHeader className="text-center">
+      <Card className="mt-16 md:mt-20 bg-secondary border">
+        <CardHeader className="text-center p-6 md:p-8">
             <div className="mx-auto bg-primary/10 rounded-full p-3 w-fit">
                 <Sparkles className="h-8 w-8 text-primary" />
             </div>
-          <CardTitle className="font-headline text-4xl text-primary mt-4">Collaborate With Us</CardTitle>
-          <CardDescription className="text-lg max-w-2xl mx-auto text-foreground/80">
+          <CardTitle className="font-headline text-3xl md:text-4xl text-primary mt-4">Collaborate With Us</CardTitle>
+          <CardDescription className="text-lg max-w-2xl mx-auto text-foreground/80 mt-2">
             Are you a designer, artisan, or creative with a passion for heritage? Let's create something beautiful together.
           </CardDescription>
         </CardHeader>
-        <CardContent className="text-center">
-            <p className="text-lg text-foreground/90 mb-6">
+        <CardContent className="text-center px-6 md:px-8 pb-8 md:pb-10">
+            <p className="text-base md:text-lg text-foreground/90 mb-6">
             We are always open to new ideas and partnerships that align with our vision of blending tradition with contemporary style. If you have a unique skill or a design concept, we would love to explore the possibilities.
             </p>
-          <Button size="lg">Propose a Collaboration</Button>
+            <Button size="lg" asChild>
+                <Link href="mailto:sawsimonlinn@gmail.com">Propose a Collaboration</Link>
+            </Button>
         </CardContent>
       </Card>
     </div>

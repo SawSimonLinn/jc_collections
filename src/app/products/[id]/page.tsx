@@ -1,12 +1,13 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Star, Truck, ShieldCheck } from "lucide-react";
+import { Star, Phone, PenTool, Sparkles } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import Link from "next/link";
 
 export default function ProductDetailPage({
   params,
@@ -110,13 +111,118 @@ export default function ProductDetailPage({
       description:
         "The Midnight Velvet Lehenga is a luxurious ensemble crafted from rich velvet fabric. Its intricate embroidery and flowing silhouette make it a perfect choice for evening events.",
     },
+    {
+      id: "5",
+      name: "Maharaja Sherwani",
+      price: 680,
+      images: [
+        {
+          src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/1-9.jpg?raw=true",
+          alt: "Front view",
+          "data-ai-hint": "sherwani design",
+        },
+        {
+          src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/1-10.jpg?raw=true",
+          alt: "Back view",
+          "data-ai-hint": "sherwani design",
+        },
+        {
+          src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/1-11.jpg?raw=true",
+          alt: "Fabric detail",
+          "data-ai-hint": "fabric texture",
+        },
+      ],
+      description:
+        "The Maharaja Sherwani is a regal outfit that exudes elegance and sophistication. Crafted from luxurious fabric, it features intricate embroidery and a modern silhouette.",
+    },
+    {
+      id: "6",
+      name: "Ivory Kurta Set",
+      price: 250,
+      images: [
+        {
+          src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/1-12.jpg?raw=true",
+          alt: "Front view",
+          "data-ai-hint": "kurta design",
+        },
+        {
+          src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/1-13.jpg?raw=true",
+          alt: "Back view",
+          "data-ai-hint": "kurta design",
+        },
+        {
+          src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/1-14.jpg?raw=true",
+          alt: "Fabric detail",
+          "data-ai-hint": "fabric texture",
+        },
+      ],
+      description:
+        "The Ivory Kurta Set is a timeless classic that combines comfort and style. Made from soft, breathable fabric, it features intricate detailing and a modern silhouette.",
+    },
+    {
+      id: "7",
+      name: "Kundan Necklace Set",
+      price: 290,
+      images: [
+        {
+          src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/2-5.jpg?raw=true",
+          alt: "Front view",
+          "data-ai-hint": "kundan jewelry",
+        },
+        {
+          src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/2-6.jpg?raw=true",
+          alt: "Back view",
+          "data-ai-hint": "kundan jewelry",
+        },
+        {
+          src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/2-7.jpg?raw=true",
+          alt: "Fabric detail",
+          "data-ai-hint": "fabric texture",
+        },
+      ],
+      description:
+        "The Kundan Necklace Set is a stunning piece of jewelry that features intricate craftsmanship and a timeless design. Perfect for special occasions.",
+    },
+    {
+      id: "8",
+      name: "Embellished Clutch",
+      price: 120,
+      images: [
+        {
+          src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/2-8.jpg?raw=true",
+          alt: "Front view",
+          "data-ai-hint": "clutch design",
+        },
+        {
+          src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/2-9.jpg?raw=true",
+          alt: "Back view",
+          "data-ai-hint": "clutch design",
+        },
+        {
+          src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/2-10.jpg?raw=true",
+          alt: "Fabric detail",
+          "data-ai-hint": "fabric texture",
+        },
+      ],
+      description:
+        "The Embellished Clutch is a chic accessory that adds a touch of glamour to any outfit. Featuring intricate embellishments and a sleek design, it's perfect for special occasions.",
+    },
   ];
 
-  const product = products.find((p) => p.id === params.id) || products[0];
+  const product = products.find((p) => p.id === params.id);
+  if (!product) {
+    return (
+      <div className="container mx-auto py-12 md:py-20 px-4">
+        <h1 className="text-3xl font-bold text-center text-red-500">
+          Product not found
+        </h1>
+      </div>
+    );
+  }
 
   return (
-    <div className="container mx-auto py-12 md:py-20">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+    <div className="container mx-auto py-12 md:py-20 px-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
         <div>
           <div className="grid grid-cols-1 gap-4">
             {product.images.map((img, index) => (
@@ -136,10 +242,10 @@ export default function ProductDetailPage({
           </div>
         </div>
         <div className="sticky top-24 h-fit">
-          <h1 className="font-headline text-5xl text-primary">
+          <h1 className="font-headline text-4xl md:text-5xl text-primary">
             {product.name}
           </h1>
-          <div className="flex items-center gap-4 mt-4">
+          <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mt-4">
             <span className="text-4xl font-bold text-foreground">
               ${product.price}
             </span>
@@ -153,27 +259,27 @@ export default function ProductDetailPage({
               <span className="text-muted-foreground ml-2">(12 reviews)</span>
             </div>
           </div>
-          <p className="mt-6 text-lg text-foreground/80 leading-relaxed">
+          <p className="mt-6 text-base md:text-lg text-foreground/80 leading-relaxed">
             {product.description}
           </p>
 
           <div className="mt-8">
-            <Button size="lg" className="w-full">
-              Add to Cart
+            <Button size="lg" className="w-full" asChild>
+              <Link href="/contact">
+                <Phone className="mr-2 h-5 w-5" />
+                Contact Us to Order
+              </Link>
             </Button>
-            <p className="text-center text-muted-foreground mt-2 text-sm">
-              Optional E-Commerce Feature
-            </p>
           </div>
 
-          <div className="mt-8 space-y-4">
+          <div className="mt-8 space-y-4 text-sm md:text-base">
             <div className="flex items-center gap-3">
-              <Truck className="h-6 w-6 text-accent" />
-              <span>Free worldwide shipping on orders over $500</span>
+              <PenTool className="h-6 w-6 text-accent" />
+              <span>Exquisite craftsmanship in every detail</span>
             </div>
             <div className="flex items-center gap-3">
-              <ShieldCheck className="h-6 w-6 text-accent" />
-              <span>Secure payments and hassle-free returns</span>
+              <Sparkles className="h-6 w-6 text-accent" />
+              <span>Personal styling consultations available</span>
             </div>
           </div>
 
@@ -183,7 +289,7 @@ export default function ProductDetailPage({
                 Details & Care
               </AccordionTrigger>
               <AccordionContent>
-                <ul className="list-disc list-inside space-y-2">
+                <ul className="list-disc list-inside space-y-2 text-base">
                   <li>Fabric: 100% Pure Mulberry Silk</li>
                   <li>Weave: Handloom</li>
                   <li>Embroidery: Zari and threadwork</li>
@@ -193,12 +299,11 @@ export default function ProductDetailPage({
             </AccordionItem>
             <AccordionItem value="item-2">
               <AccordionTrigger className="text-lg font-headline">
-                Shipping & Returns
+                Bespoke Services
               </AccordionTrigger>
-              <AccordionContent>
-                We offer complimentary shipping on all orders. Returns are
-                accepted within 30 days of purchase. Please see our full policy
-                for more details.
+              <AccordionContent className="text-base">
+                We offer bespoke tailoring and alteration services to ensure a
+                perfect fit. Please contact us for a personal consultation.
               </AccordionContent>
             </AccordionItem>
           </Accordion>

@@ -32,24 +32,33 @@ const heroImages = [
 const featuredLooks = [
   {
     id: 1,
-    src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/3-2.jpg?raw=true",
-    alt: "Elegant evening wear",
-    name: "Golden Hour Gown",
-    "data-ai-hint": "evening gown",
+    name: "Regal Silk Sari",
+    price: 450,
+    image:
+      "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/3-2.jpg?raw=true",
+    "data-ai-hint": "silk sari",
+    inStock: true,
+    preOrder: false,
   },
   {
     id: 2,
-    src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/3-5.jpg?raw=true",
-    alt: "A modern take on a classic design",
-    name: "Azure Dream Ensemble",
-    "data-ai-hint": "modern fashion",
+    name: "Embroidered Anarkali",
+    price: 320,
+    image:
+      "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/3-5.jpg?raw=true",
+    "data-ai-hint": "anarkali suit",
+    inStock: true,
+    preOrder: false,
   },
   {
     id: 3,
-    src: "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/3-4.jpg?raw=true",
-    alt: "Vibrant and colorful traditional attire",
     name: "Crimson Bloom Sari",
-    "data-ai-hint": "traditional sari",
+    price: 480,
+    image:
+      "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/3-4.jpg?raw=true",
+    "data-ai-hint": "red sari",
+    inStock: false,
+    preOrder: true,
   },
 ];
 
@@ -57,19 +66,22 @@ const categories = [
   {
     name: "Women's Collection",
     href: "/products",
-    image: "https://placehold.co/800x800.png",
+    image:
+      "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/3-4.jpg?raw=true",
     "data-ai-hint": "elegant woman fashion",
   },
   {
     name: "Men's Attire",
     href: "/products",
-    image: "https://placehold.co/800x800.png",
+    image:
+      "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/3-1.jpg?raw=true",
     "data-ai-hint": "stylish man portrait",
   },
   {
     name: "Accessories",
     href: "/products",
-    image: "https://placehold.co/800x800.png",
+    image:
+      "https://github.com/SawSimonLinn/foto_uploads_online/blob/main/jc_collections/photo/3-3.jpg?raw=true",
     "data-ai-hint": "luxury accessories",
   },
 ];
@@ -108,7 +120,7 @@ export default function Home() {
                     src={image.src}
                     alt={image.alt}
                     fill
-                    className="object-cover object-top"
+                    className="object-cover"
                     data-ai-hint={image["data-ai-hint"]}
                     priority={index === 0}
                   />
@@ -141,7 +153,7 @@ export default function Home() {
       </section>
 
       <section className="py-16 md:py-24 bg-secondary">
-        <div className="container mx-auto text-center">
+        <div className="container mx-auto text-center px-4">
           <h2 className="font-headline text-4xl md:text-5xl text-primary">
             A Legacy of Craftsmanship
           </h2>
@@ -165,7 +177,7 @@ export default function Home() {
       </section>
 
       <section className="py-16 md:py-24">
-        <div className="container mx-auto">
+        <div className="container mx-auto px-4">
           <h2 className="font-headline text-4xl md:text-5xl text-center text-primary mb-12">
             Featured Looks
           </h2>
@@ -173,20 +185,20 @@ export default function Home() {
             {featuredLooks.map((look) => (
               <Card
                 key={look.id}
-                className="overflow-hidden border-none shadow-lg transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                className="overflow-hidden border bg-card text-card-foreground shadow-sm transition-shadow hover:shadow-lg"
               >
                 <CardContent className="p-0">
                   <Link href={`/products/${look.id}`}>
                     <div className="relative aspect-[3/4]">
                       <Image
-                        src={look.src}
-                        alt={look.alt}
+                        src={look.image}
+                        alt={look.name}
                         fill
                         className="object-cover"
                         data-ai-hint={look["data-ai-hint"]}
                       />
                     </div>
-                    <div className="p-6 bg-background">
+                    <div className="p-6">
                       <h3 className="font-headline text-2xl text-foreground">
                         {look.name}
                       </h3>
@@ -203,32 +215,30 @@ export default function Home() {
       </section>
 
       <section className="py-16 md:py-24 bg-secondary">
-        <div className="container mx-auto">
+        <div className="container mx-auto px-4">
           <h2 className="font-headline text-4xl md:text-5xl text-center text-primary mb-12">
             Shop by Category
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {categories.map((category) => (
               <Link key={category.name} href={category.href}>
-                <Card className="overflow-hidden border-none shadow-lg transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl group">
-                  <CardContent className="p-0 relative">
-                    <div className="relative aspect-square">
-                      <Image
-                        src={category.image}
-                        alt={category.name}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                        data-ai-hint={category["data-ai-hint"]}
-                      />
-                      <div className="absolute inset-0 bg-black/40" />
-                    </div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <h3 className="font-headline text-3xl text-white text-center drop-shadow-md">
-                        {category.name}
-                      </h3>
-                    </div>
-                  </CardContent>
-                </Card>
+                <div className="overflow-hidden rounded-lg border group relative shadow-sm transition-shadow hover:shadow-lg">
+                  <div className="relative aspect-square">
+                    <Image
+                      src={category.image}
+                      alt={category.name}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      data-ai-hint={category["data-ai-hint"]}
+                    />
+                    <div className="absolute inset-0 bg-black/40" />
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center p-4">
+                    <h3 className="font-headline text-3xl text-white text-center drop-shadow-md">
+                      {category.name}
+                    </h3>
+                  </div>
+                </div>
               </Link>
             ))}
           </div>
@@ -236,17 +246,14 @@ export default function Home() {
       </section>
 
       <section className="py-16 md:py-24">
-        <div className="container mx-auto">
+        <div className="container mx-auto px-4">
           <h2 className="font-headline text-4xl md:text-5xl text-center text-primary mb-12">
             What Our Clients Say
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card
-                key={index}
-                className="bg-card border-none shadow-lg flex flex-col"
-              >
-                <CardContent className="p-8 flex-grow">
+              <Card key={index} className="bg-card flex flex-col">
+                <CardContent className="p-6 md:p-8 flex-grow">
                   <div className="flex items-center mb-4">
                     {[...Array(5)].map((_, i) => (
                       <Star
@@ -255,7 +262,7 @@ export default function Home() {
                       />
                     ))}
                   </div>
-                  <blockquote className="text-foreground/80 italic">
+                  <blockquote className="text-foreground/80 italic text-base">
                     "{testimonial.quote}"
                   </blockquote>
                 </CardContent>
